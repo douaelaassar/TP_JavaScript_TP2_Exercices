@@ -1,0 +1,67 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP2 - Question 1</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f4ff;
+      margin-top: 80px;
+    }
+
+    h2 {
+      color: #3446a5;
+    }
+
+    #maDiv {
+      width: 200px;
+      height: 100px;
+      background-color: lightgray;
+      border: 2px solid black;
+      border-radius: 10px;
+      margin: 20px auto;
+    }
+
+    button {
+      padding: 12px 22px;
+      background-color: #3446a5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5268d8;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>TP2 - Question 1</h2>
+  <p>Clique sur le bouton pour changer la couleur.</p>
+
+  <div id="maDiv"></div>
+
+  <button id="monBouton">Changer la couleur</button>
+
+  <script>
+    let div = document.getElementById("maDiv");
+    let button = document.getElementById("monBouton");
+
+    button.addEventListener("click", function() {
+      if (div.style.backgroundColor === "lightblue") {
+        div.style.backgroundColor = "lightgray";
+      } else {
+        div.style.backgroundColor = "lightblue";
+      }
+    });
+  </script>
+</body>
+</html>
+```
