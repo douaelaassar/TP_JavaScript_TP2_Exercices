@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 3 : Validation du formulaire</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>TP2 - Question 3 : Validation du formulaire</h1><form id="formulaire"><label>Nom : <input id="nom" type="text"></label><br><label>Email : <input id="email" type="text"></label><br><button type="submit">Soumettre</button></form><p id="message" class="result"></p></main>
+<script>document.getElementById("formulaire").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let nom = document.getElementById("nom").value.trim();
+  let email = document.getElementById("email").value.trim();
+  if (nom !== "" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById("message").textContent = "Formulaire valide !";
+  } else {
+    document.getElementById("message").textContent = "Veuillez saisir un nom et un email valide.";
+  }
+});</script></body></html>

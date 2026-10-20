@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 12 : Responsive avec JavaScript</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>TP2 - Question 12 : Responsive avec JavaScript</h1><p id="largeur"></p><div id="contenu" style="padding:20px;background:#dce4ff;border-radius:8px">Contenu adaptable à la largeur de l’écran.</div></main>
+<script>function adapterPage() {
+  let petit = window.innerWidth < 600;
+  document.getElementById("largeur").textContent = "Largeur de la fenêtre : " + window.innerWidth + " px";
+  document.getElementById("contenu").style.fontSize = petit ? "14px" : "20px";
+  document.getElementById("contenu").textContent = petit ? "Affichage mobile" : "Affichage écran large";
+}
+window.addEventListener("resize", adapterPage);
+adapterPage();</script></body></html>

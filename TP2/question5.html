@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 5 : Carrousel</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>TP2 - Question 5 : Carrousel</h1><div id="image" style="font-size:70px;text-align:center;padding:30px;background:#eef1ff;border-radius:10px">🌅</div><button id="precedent">Précédent</button><button id="suivant">Suivant</button></main>
+<script>let images = ["🌅", "🌳", "🏖️", "🌃"], i = 0;
+function afficher() { document.getElementById("image").textContent = images[i]; }
+document.getElementById("suivant").addEventListener("click", function() { i = (i + 1) % images.length; afficher(); });
+document.getElementById("precedent").addEventListener("click", function() { i = (i - 1 + images.length) % images.length; afficher(); });</script></body></html>

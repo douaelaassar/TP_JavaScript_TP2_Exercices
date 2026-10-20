@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 7 : Chronomètre</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>TP2 - Question 7 : Chronomètre</h1><p id="temps" style="font-size:32px">0 seconde</p><button id="demarrer">Démarrer</button><button id="arreter">Arrêter</button><button id="reset">Réinitialiser</button></main>
+<script>let secondes = 0, intervalle = null;
+function afficherTemps() { document.getElementById("temps").textContent = secondes + " seconde(s)"; }
+document.getElementById("demarrer").addEventListener("click", function() { if (intervalle === null) intervalle = setInterval(function() { secondes++; afficherTemps(); }, 1000); });
+document.getElementById("arreter").addEventListener("click", function() { clearInterval(intervalle); intervalle = null; });
+document.getElementById("reset").addEventListener("click", function() { clearInterval(intervalle); intervalle = null; secondes = 0; afficherTemps(); });</script></body></html>

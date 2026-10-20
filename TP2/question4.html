@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 4 : Calculatrice simple</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>TP2 - Question 4 : Calculatrice simple</h1><input id="a" type="number" placeholder="Nombre 1"><select id="operation"><option value="+">+</option><option value="-">-</option><option value="*">*</option><option value="/">/</option></select><input id="b" type="number" placeholder="Nombre 2"><button id="calculer">Calculer</button><p id="resultat" class="result"></p></main>
+<script>document.getElementById("calculer").addEventListener("click", function() {
+  let a = Number(document.getElementById("a").value);
+  let b = Number(document.getElementById("b").value);
+  let op = document.getElementById("operation").value;
+  let r;
+  if (op === "+") r = a + b;
+  else if (op === "-") r = a - b;
+  else if (op === "*") r = a * b;
+  else if (b === 0) { document.getElementById("resultat").textContent = "Division par zéro impossible."; return; }
+  else r = a / b;
+  document.getElementById("resultat").textContent = "Résultat : " + r;
+});</script></body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 15 : Thème clair / sombre</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+body.sombre{background:#20243a;color:white}body.sombre main{background:#303650}body.sombre h1{color:#b9c4ff}
+</style>
+</head><body><main><h1>TP2 - Question 15 : Thème clair / sombre</h1><button id="theme">Changer de thème</button><p>Le bouton permet de passer du mode clair au mode sombre.</p></main>
+<script>document.getElementById("theme").addEventListener("click", function() {
+  document.body.classList.toggle("sombre");
+  if (document.body.classList.contains("sombre")) localStorage.setItem("theme", "sombre");
+  else localStorage.setItem("theme", "clair");
+});
+if (localStorage.getItem("theme") === "sombre") document.body.classList.add("sombre");</script></body></html>

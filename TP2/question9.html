@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP2 - Question 9 : To-do list</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>TP2 - Question 9 : To-do list</h1><input id="tache" placeholder="Nouvelle tâche"><button id="ajouter">Ajouter</button><ul id="liste"></ul></main>
+<script>document.getElementById("ajouter").addEventListener("click", function() {
+  let champ = document.getElementById("tache"), texte = champ.value.trim();
+  if (texte === "") return;
+  let li = document.createElement("li"), fait = document.createElement("button"), supprimer = document.createElement("button");
+  li.appendChild(document.createTextNode(texte + " "));
+  fait.textContent = "Fait"; supprimer.textContent = "Supprimer";
+  fait.addEventListener("click", function() { li.style.textDecoration = li.style.textDecoration === "line-through" ? "none" : "line-through"; });
+  supprimer.addEventListener("click", function() { li.remove(); });
+  li.appendChild(fait); li.appendChild(supprimer); document.getElementById("liste").appendChild(li); champ.value = "";
+});</script></body></html>
