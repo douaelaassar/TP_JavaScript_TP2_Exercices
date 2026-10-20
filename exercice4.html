@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercice 4 : Somme de trois temps</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>Exercice 4 : Somme de trois temps</h1><p>Entre trois durées. Les minutes et secondes doivent être comprises entre 0 et 59.</p>
+<form id="formTemps">
+<div><h3>Temps 1</h3><input id="h1" type="number" min="0" value="0" placeholder="Heures"><input id="m1" type="number" min="0" max="59" value="0" placeholder="Minutes"><input id="s1" type="number" min="0" max="59" value="0" placeholder="Secondes"></div>
+<div><h3>Temps 2</h3><input id="h2" type="number" min="0" value="0" placeholder="Heures"><input id="m2" type="number" min="0" max="59" value="0" placeholder="Minutes"><input id="s2" type="number" min="0" max="59" value="0" placeholder="Secondes"></div>
+<div><h3>Temps 3</h3><input id="h3" type="number" min="0" value="0" placeholder="Heures"><input id="m3" type="number" min="0" max="59" value="0" placeholder="Minutes"><input id="s3" type="number" min="0" max="59" value="0" placeholder="Secondes"></div>
+<button type="submit">Somme</button><button type="reset">Effacer</button>
+</form><p id="resultat" class="result">0 jour(s), 0 heure(s), 0 minute(s), 0 seconde(s)</p></main>
+<script>document.getElementById("formTemps").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let total = 0;
+  for (let i=1; i<=3; i++) {
+    let h = parseInt(document.getElementById("h"+i).value) || 0;
+    let m = parseInt(document.getElementById("m"+i).value) || 0;
+    let s = parseInt(document.getElementById("s"+i).value) || 0;
+    if (m > 59 || s > 59 || h < 0 || m < 0 || s < 0) {
+      document.getElementById("resultat").textContent = "Vérifie les valeurs saisies."; return;
+    }
+    total += h*3600 + m*60 + s;
+  }
+  let jours = Math.floor(total/86400); total %= 86400;
+  let heures = Math.floor(total/3600); total %= 3600;
+  let minutes = Math.floor(total/60), secondes = total%60;
+  document.getElementById("resultat").textContent = jours+" jour(s), "+heures+" heure(s), "+minutes+" minute(s), "+secondes+" seconde(s)";
+});
+document.getElementById("formTemps").addEventListener("reset", function() {
+  document.getElementById("resultat").textContent = "0 jour(s), 0 heure(s), 0 minute(s), 0 seconde(s)";
+});</script></body></html>

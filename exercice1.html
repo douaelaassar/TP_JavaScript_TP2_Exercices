@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercice 1 : QCM</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:850px;margin:35px auto;padding:20px;background:#f1f4ff;color:#20243a}
+main{background:white;padding:25px;border-radius:14px;box-shadow:0 5px 18px #0001}
+h1{color:#3446a5}button{padding:10px 16px;margin:5px;background:#3446a5;color:white;border:0;border-radius:7px;cursor:pointer}
+input,select{padding:9px;margin:5px;border:1px solid #bbb;border-radius:6px}.result{padding:12px;background:#eef1ff;border-radius:8px;margin-top:14px}
+
+</style>
+</head><body><main><h1>Exercice 1 : QCM</h1><p>Réponds aux 5 questions. Les questions 1, 2 et 3 sont à choix multiples.</p>
+<form id="qcm">
+<p>1. Quels mots-clés peuvent déclarer une variable ?</p>
+<label><input type="checkbox" name="q1" value="var"> var</label> <label><input type="checkbox" name="q1" value="let"> let</label> <label><input type="checkbox" name="q1" value="const"> const</label> <label><input type="checkbox" name="q1" value="define"> define</label>
+<p>2. Quels sont des types JavaScript ?</p>
+<label><input type="checkbox" name="q2" value="String"> String</label> <label><input type="checkbox" name="q2" value="Boolean"> Boolean</label> <label><input type="checkbox" name="q2" value="Number"> Number</label> <label><input type="checkbox" name="q2" value="Pizza"> Pizza</label>
+<p>3. Quelles méthodes existent pour les tableaux ?</p>
+<label><input type="checkbox" name="q3" value="push"> push()</label> <label><input type="checkbox" name="q3" value="pop"> pop()</label> <label><input type="checkbox" name="q3" value="join"> join()</label> <label><input type="checkbox" name="q3" value="paint"> paint()</label>
+<p>4. Quelle instruction affiche dans la console ?</p>
+<label><input type="radio" name="q4" value="alert"> alert("Bonjour")</label> <label><input type="radio" name="q4" value="console"> console.log("Bonjour")</label>
+<p>5. Quel opérateur effectue une comparaison stricte ?</p>
+<label><input type="radio" name="q5" value="="> =</label> <label><input type="radio" name="q5" value="=="> ==</label> <label><input type="radio" name="q5" value="==="> ===</label>
+<button type="button" id="corriger">Afficher le résultat</button><button type="reset" id="initialiser">Initialiser</button><button type="button" id="corrige">Afficher le corrigé</button>
+</form><p id="resultat" class="result"></p></main>
+<script>const reponses = {q1:["var","let","const"],q2:["String","Boolean","Number"],q3:["push","pop","join"],q4:["console"],q5:["==="]};
+function selection(n) { return [...document.querySelectorAll('input[name="'+n+'"]:checked')].map(x=>x.value).sort(); }
+function egales(a,b) { return a.length===b.length && a.every((v,i)=>v===b[i]); }
+document.getElementById("corriger").addEventListener("click", function() {
+  let score=0, lignes=[];
+  Object.keys(reponses).forEach(function(q,i) {
+    let ok=egales(selection(q), [...reponses[q]].sort()); if(ok) score++;
+    lignes.push("Question "+(i+1)+" : "+(ok?"réponse correcte":"réponse incorrecte"));
+  });
+  document.getElementById("resultat").textContent="Résultat : "+score+"/5. "+lignes.join(" | ");
+  let w=window.open("","resultatQCM","width=500,height=400");
+  if(w){w.document.write("<h1>Résultat du QCM</h1><p>Score : "+score+"/5</p><p>"+lignes.join("<br>")+"</p>");w.document.close();}
+});
+document.getElementById("corrige").addEventListener("click", function() {
+  let w=window.open("","corrigeQCM","width=550,height=600");
+  if(!w){alert("Autorise les fenêtres pop-up pour afficher le corrigé.");return;}
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Corrigé QCM</title><style>body{font-family:Arial;padding:20px} .bon{color:green;text-decoration:underline;font-weight:bold}</style></head><body><h1>Corrigé du QCM</h1><p>1. <span class="bon">var, let, const</span></p><p>2. <span class="bon">String, Boolean, Number</span></p><p>3. <span class="bon">push(), pop(), join()</span></p><p>4. <span class="bon">console.log("Bonjour")</span></p><p>5. <span class="bon">===</span></p></body></html>');
+  w.document.close();
+});
+document.getElementById("initialiser").addEventListener("click", function(){document.getElementById("resultat").textContent="";});</script></body></html>
